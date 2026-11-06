@@ -1,0 +1,41 @@
+Photo credits. Every image is from Wikimedia Commons and is CC0, public domain or has no known
+restrictions, so nothing is shown on the page. Each has a full-size copy and a smaller -sm copy.
+The buildings belong to the real institutions named; Sterling Grove University is fictional and
+has no connection with any of them.
+
+library-reading-room
+  Michael D Beckwith, CC0
+  https://commons.wikimedia.org/wiki/File:The_John_Rylands_Library_Reading_Room_Enclosure.jpg
+gothic-entrance
+  Brandonrush, public domain
+  https://commons.wikimedia.org/wiki/File:University_of_Arkansas_Agriculture_Building.jpg
+quad-winter
+  WestCoastivieS, CC0
+  https://commons.wikimedia.org/wiki/File:Quadrangle_Building_at_the_University_of_Pennsylvania.jpg
+quad-lawn
+  Daderot, public domain
+  https://commons.wikimedia.org/wiki/File:General_view,_Radcliffe_Quadrangle_-_IMG_1683.jpg
+hall-classical
+  Daderot, CC0
+  https://commons.wikimedia.org/wiki/File:Lowell_Lecture_Hall_-_Harvard_University_-_Cambridge,_MA_-_DSC02575.jpg
+hall-georgian
+  Smallbones, CC0
+  https://commons.wikimedia.org/wiki/File:Quadrangle_Club_Princeton.JPG
+chapel-vault
+  unknown author, public domain
+  https://commons.wikimedia.org/wiki/File:Cornell---Sage-Chapel-interior_01.jpg
+chapel-long
+  William Winfield, public domain
+  https://commons.wikimedia.org/wiki/File:Cambridge_University,_Trinity_Chapel_Interior.jpg
+dome
+  Historic American Buildings Survey, Library of Congress, no known restrictions
+  https://commons.wikimedia.org/wiki/File:Main_Reading_Room._Interior_of_dome._Library_of_Congress_Thomas_Jefferson_Building,_Washington,_D.C._LOC_8471101258.jpg
+lecture-theatre
+  Garden Sprite, CC0
+  https://commons.wikimedia.org/wiki/File:Ohio_University_Lecture_Hall.jpg
+research-centre
+  unknown author, public domain
+  https://commons.wikimedia.org/wiki/File:Durham_Research_Center_at_UNMC.jpg
+commencement-1920s
+  unknown photographer, public domain
+  https://commons.wikimedia.org/wiki/File:Commencement_(UHPCSNP_11991).jpg

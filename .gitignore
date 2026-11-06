@@ -1,0 +1,13 @@
+# .NET
+bin/
+obj/
+TestResults/
+# Angular
+node_modules/
+dist/
+.angular/
+# editors
+.vs/
+*.user
+# kept locally, not part of this repo
+.tastemaker/

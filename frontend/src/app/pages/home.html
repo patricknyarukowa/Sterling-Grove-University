@@ -1,0 +1,198 @@
+<!-- 1. Poster fold: one photograph carries the first screen; the statement sits on a paper panel that overlaps it -->
+<section class="poster">
+  <div class="poster__photo photo" #heroPhoto>
+    <img src="images/library-reading-room.jpg" width="1920" height="1280" fetchpriority="high"
+         alt="The university library reading room: carved oak shelving beneath stained-glass windows" />
+  </div>
+
+  <div class="container poster__below">
+    <div class="poster__panel" #heroPanel>
+      <span class="eyebrow">Founded 1891</span>
+      <h1>Original research, from your first year.</h1>
+      <p class="lead">Six faculties share one research precinct, so undergraduates join working labs, clinics and studios in their first semester.</p>
+      <div class="poster__actions">
+        <a class="btn btn--primary" routerLink="/programmes">Apply for 2027</a>
+        <a class="link-arrow" routerLink="/events">Visit the campus</a>
+      </div>
+    </div>
+
+    <form class="finder" (ngSubmit)="findCourse()" role="search" #heroFinder>
+      <label for="course-q">Find a programme</label>
+      <div class="finder__field">
+        <input id="course-q" name="q" class="input" placeholder="Data science, law, mechatronics" [(ngModel)]="courseQuery" />
+        <button class="btn btn--primary" type="submit" aria-label="Search programmes"><sgu-icon name="search" [size]="18" /></button>
+      </div>
+      <a class="finder__all" routerLink="/programmes">Browse all {{ programmeTotal() || '' }} programmes</a>
+    </form>
+  </div>
+</section>
+
+<!-- 2. From the Grove: one lead story with its photograph, three headlines beside it -->
+<section class="section stories">
+  <div class="container">
+    <div class="section-head" sguReveal>
+      <h2>From the Grove</h2>
+      <a class="link-arrow" routerLink="/news">All news</a>
+    </div>
+
+    @if (lead(); as story) {
+      <div class="stories__grid">
+        <a class="story-lead" [routerLink]="['/news', story.slug]" sguReveal>
+          <div class="story-lead__photo photo">
+            <img [src]="'images/' + image(story.category) + '.jpg'" alt="" width="1920" height="1280" loading="lazy" />
+          </div>
+          <span class="tag">{{ story.category }}</span>
+          <h3>{{ story.title }}</h3>
+          <p>{{ story.summary }}</p>
+          <time [attr.datetime]="story.publishedAt">{{ story.publishedAt | date: 'd MMMM y' }}</time>
+        </a>
+
+        <ol class="story-list">
+          @for (n of rest(); track n.id; let i = $index) {
+            <li sguReveal [revealDelay]="i * 0.08">
+              <a [routerLink]="['/news', n.slug]">
+                <span class="tag">{{ n.category }}</span>
+                <h3>{{ n.title }}</h3>
+                <time [attr.datetime]="n.publishedAt">{{ n.publishedAt | date: 'd MMMM y' }}</time>
+              </a>
+            </li>
+          }
+        </ol>
+      </div>
+    } @else {
+      <div class="stories__grid">
+        <div class="skeleton" style="aspect-ratio: 3 / 2"></div>
+        <div class="skeleton" style="min-height: 320px"></div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- 3. Academics: the six faculties as a numbered index -->
+<section class="section section--alt academics">
+  <div class="container academics__grid">
+    <div class="academics__intro" sguReveal>
+      <h2>Six faculties, one precinct</h2>
+      <p class="lead">Engineers, clinicians, lawyers, scientists and artists work in neighbouring buildings and share their labs.</p>
+      <a class="btn btn--ghost" routerLink="/faculties">About the faculties</a>
+    </div>
+
+    <ol class="index">
+      @for (f of faculties(); track f.id; let i = $index) {
+        <li sguReveal [revealDelay]="i * 0.05">
+          <a [routerLink]="['/faculties', f.slug]">
+            <span class="index__no">{{ numeral(i + 1) }}</span>
+            <span class="index__body">
+              <span class="index__name">{{ f.name }}</span>
+              <span class="index__tagline">{{ f.tagline }}</span>
+            </span>
+            <span class="index__count">{{ f.programmeCount }} programmes</span>
+          </a>
+        </li>
+      } @empty {
+        @for (i of [1, 2, 3, 4, 5, 6]; track i) { <li><div class="skeleton" style="height: 64px; margin: 14px 0"></div></li> }
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- 4. Figures: the founding year runs off the edge as the one deliberate break in the grid -->
+<section class="figures on-dark">
+  <div class="figures__year" aria-hidden="true">1891</div>
+  <div class="container figures__inner">
+    <div class="figures__intro" sguReveal>
+      <p>A research university of eighteen thousand students, small enough that most of them know their professors by name.</p>
+    </div>
+    <dl class="figures__list">
+      @for (s of stats; track s.label; let i = $index) {
+        <div sguReveal [revealDelay]="i * 0.08">
+          <dt>{{ s.label }}</dt>
+          <dd>{{ s.value }}</dd>
+        </div>
+      }
+    </dl>
+  </div>
+</section>
+
+<!-- 5. Research and teaching, as a photographic diptych -->
+<section class="section">
+  <div class="container diptych">
+    <article class="diptych__item diptych__item--wide" sguReveal>
+      <div class="photo diptych__photo">
+        <img src="images/dome-sm.jpg" alt="The coffered dome of a historic reading room" width="960" height="688" loading="lazy" />
+      </div>
+      <span class="eyebrow">Research</span>
+      <h3>Discovery with a purpose</h3>
+      <p>The Vanguard Quantum Lab, the community health network and the law clinic all take undergraduate researchers.</p>
+      <a class="link-arrow" routerLink="/news" [queryParams]="{ category: 'Research' }">Research news</a>
+    </article>
+    <article class="diptych__item" sguReveal [revealDelay]="0.1">
+      <div class="photo diptych__photo">
+        <img src="images/lecture-theatre-sm.jpg" alt="A tiered lecture theatre with rows of seats" width="960" height="720" loading="lazy" />
+      </div>
+      <span class="eyebrow">Teaching</span>
+      <h3>Small classes, close mentors</h3>
+      <p>Studio and seminar teaching, with real projects set by industry and community partners.</p>
+      <a class="link-arrow" routerLink="/programmes">Find a programme</a>
+    </article>
+  </div>
+</section>
+
+<!-- 6. One student voice at a time -->
+@if (voice(); as t) {
+  <section class="section section--alt voice">
+    <div class="container voice__inner" sguReveal>
+      <figure>
+        <blockquote>“{{ t.quote }}”</blockquote>
+        <figcaption><strong>{{ t.studentName }}</strong>, {{ t.programme }}</figcaption>
+      </figure>
+      @if (testimonials().length > 1) {
+        <div class="voice__pick" role="group" aria-label="Choose a student">
+          @for (item of testimonials(); track item.id; let i = $index) {
+            <button type="button" [class.active]="i === voiceIndex()" [attr.aria-pressed]="i === voiceIndex()" (click)="voiceIndex.set(i)">{{ item.studentName }}</button>
+          }
+        </div>
+      }
+    </div>
+  </section>
+}
+
+<!-- 7. Diary -->
+<section class="section diary">
+  <div class="container">
+    <div class="section-head" sguReveal>
+      <h2>Upcoming at Sterling Grove</h2>
+      <a class="link-arrow" routerLink="/events">Full calendar</a>
+    </div>
+    <ul class="diary__list">
+      @for (e of events(); track e.id; let i = $index) {
+        <li sguReveal [revealDelay]="i * 0.06">
+          <time class="diary__date" [attr.datetime]="e.startsAt">
+            <span>{{ e.startsAt | date: 'MMM' }}</span>
+            <strong>{{ e.startsAt | date: 'd' }}</strong>
+          </time>
+          <div>
+            <h3>{{ e.title }}</h3>
+            <p>{{ e.startsAt | date: 'EEEE, HH:mm' }} · {{ e.location }}</p>
+          </div>
+        </li>
+      } @empty {
+        <li class="muted">No upcoming events are scheduled yet.</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- 8. Close: admissions -->
+<section class="admit on-dark">
+  <div class="admit__photo photo" aria-hidden="true">
+    <img src="images/quad-lawn.jpg" alt="" width="1920" height="1440" loading="lazy" />
+  </div>
+  <div class="container admit__inner" sguReveal>
+    <h2>Applications for 2027 entry close on 30 September.</h2>
+    <div class="admit__actions">
+      <a class="btn btn--gold" routerLink="/programmes">Start your application</a>
+      <a class="btn btn--light" routerLink="/contact">Ask admissions a question</a>
+    </div>
+  </div>
+</section>

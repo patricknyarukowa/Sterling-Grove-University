@@ -1,0 +1,39 @@
+/* Shared styles for the admin CRUD screens (list table + edit panel) */
+
+:host { display: block; }
+
+.page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); flex-wrap: wrap; }
+.page-head h1 { font-size: clamp(2rem, 3vw, 2.5rem); margin: 0; }
+
+.toolbar { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.toolbar .input { max-width: 340px; min-height: 44px; }
+
+.table-wrap { background: var(--surface); border: 1px solid var(--line); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th { text-align: left; font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; padding: 14px 18px; background: var(--surface-alt); border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+td { padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background-color .12s var(--ease-out); }
+tbody tr:hover td { background: #fbf9f4; }
+td.actions { white-space: nowrap; text-align: right; }
+td.actions .btn + .btn { margin-left: 6px; }
+.title-cell { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; color: var(--plum-900); }
+.empty { padding: 40px; text-align: center; color: var(--muted); }
+
+/* Slide-in edit panel */
+.backdrop { position: fixed; inset: 0; background: rgba(34, 16, 61, .45); z-index: 40; animation: fade .2s var(--ease-out); }
+.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(580px, 100vw); background: var(--paper); z-index: 41; display: flex; flex-direction: column; border-left: 2px solid var(--gold); box-shadow: var(--shadow-lg); animation: slide .25s var(--ease-out); }
+@keyframes slide { from { transform: translateX(32px); opacity: 0; } }
+@keyframes fade { from { opacity: 0; } }
+.panel__head { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; border-bottom: 1px solid var(--line); }
+.panel__head h2 { font-size: 1.7rem; margin: 0; }
+.panel__close { width: 44px; height: 44px; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: var(--muted); line-height: 1; transition: color .15s var(--ease-out); }
+.panel__close:hover { color: var(--plum); }
+.panel__body { padding: 28px; overflow-y: auto; flex: 1; }
+.panel__foot { display: flex; justify-content: flex-end; gap: 10px; padding: 18px 28px; border-top: 1px solid var(--line); background: var(--surface); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 560px) { .two { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel { animation: fade .15s linear; }
+}
